@@ -8,7 +8,7 @@ This Simple Invoice System provides APIs to create invoices, pay invoices, and p
 
 
 ### Create Invoice
-This API is used to create a new invoice. It accepts invoice details as input and returns the unique identifier of the created invoice.
+This API is used to create a new invoice.
 ```http
 
 
@@ -45,9 +45,9 @@ Body :
    "data": [
        {
            "id": 1,
-           "amount": 500.55,
+           "amount": 333.05,
            "paidAmount": 0.0,
-           "dueDate": "2024-06-05",
+           "dueDate": "2024-09-19",
            "status": "pending"
        }
    ]
@@ -75,8 +75,7 @@ Status: 200 OK if the payment is successful
 
 
 ### Process Overdue Payment
-This endpoint processes all pending invoices that are overdue. It applies a late fee to invoices that are partially paid and creates new invoices for the remaining amount plus the late fee. Invoices that are fully paid are marked as paid.
-```http
+This endpoint processes all pending invoices that are overdue. It applies a late fee to invoices that are partially paid and creates new invoices for the remaining amount plus the late fee. 
 Endpoint : POST /invoices/process-overdue
 
 
@@ -124,7 +123,7 @@ curl -X POST http://localhost:8080/invoices/process-overdue -H "Content-Type: ap
 ```http
 
 
-Java 8+
+Java 11+
 Spring Boot
 Maven
 Setup and Running
@@ -136,8 +135,8 @@ Clone the repository :
 ```http
 
 
-git clone <repository-url>
-cd <repository-directory>
+git clone repository-url>](https://github.com/ranjithhl/InvoiceSystemApplication.git
+cd InvoiceSystemApplication
 
 
 ```
@@ -161,12 +160,3 @@ mvn spring-boot:run
 
 The application will start on http://localhost:8080.
 
-
-## Assumptions
-* Payments cannot exceed the total amount due on an invoice
-
-
-## Additional Functionality
-* The system handles basic error cases, such as invalid invoice IDs or no overdue invoices exist.
-* Appropriate HTTP status codes and error messages are returned for invalid requests.
-* Unit tests are included for the controller, service, and DAO layers to ensure that core functionalities work as expected.
